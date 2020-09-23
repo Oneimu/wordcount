@@ -1,0 +1,23 @@
+from nltk.corpus import stopwords
+from nltk.probability import FreqDist
+stop_words = stopwords.words('english')
+
+
+# clean_text function removes stopwords (conjuctions and putuations) from the text
+def clean_text(text):
+    list_words = text.split()
+
+    for char in list_words:
+        if char.lower() in stop_words:
+            list_words.remove(char)
+    ' '.join(list_words)
+    return list_words 
+
+# word_count function returns words and the number of times they appear in a sentence 
+def word_count(new_sentence):
+    sen = FreqDist()
+    list_words =[]
+    for word in new_sentence:
+        sen[word.lower()] +=1
+    return sen
+    
